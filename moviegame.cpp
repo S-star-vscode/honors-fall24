@@ -31,16 +31,37 @@ void suggestMovie(string genre, string mood, int duration) {
     }
 }
 
+int choose(int max, string options[]) {
+    int choice;
+    for (int i = 0; i < max; i++) {
+        cout << i + 1 << ". " << options[i] << endl;
+    }
+    while(true)
+    {
+        cout << "Enter your choice: ";
+        cin >> choice;
+        if (choice < 1 || choice > max) {
+            cout << "Invalid choice. Please try again." << endl;
+        }
+        else {
+            break;
+        }
+    }
+    return choice;
+}
+
 int main() {
+    string genres[] = {"action", "comedy", "drama"};
+    string moods[] = {"excited", "calm"};
     string genre, mood;
     int duration;
 
-    // User input
-    cout << "What genre of movie do you prefer? (action, comedy, drama): ";
-    cin >> genre;
+    cout << "What genre of movie do you prefer? (action, comedy, drama): " << endl;
+    genre = genres[choose(3, genres)-1];
+    
 
-    cout << "What is your current mood? (excited, calm): ";
-    cin >> mood;
+    cout << "What is your current mood? (excited, calm): " << endl;
+    mood = moods[choose(2, moods)-1];
 
     cout << "Enter the maximum duration you prefer (in minutes): ";
     cin >> duration;
